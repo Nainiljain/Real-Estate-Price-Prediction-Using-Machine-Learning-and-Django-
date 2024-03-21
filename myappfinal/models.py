@@ -53,6 +53,7 @@ class Property(models.Model):
     PropertyName =models.CharField(max_length=30)
     User =models.ForeignKey(User,null=True, blank=True, default = None, on_delete=models.CASCADE)
     Area=models.ForeignKey(Area, on_delete=models.CASCADE)
+    Category=models.ForeignKey(Category,null=True, blank=True, default = None, on_delete=models.CASCADE)
     Subcategory=models.ForeignKey(Subcategory, on_delete=models.CASCADE)
     PropertyTitle = models.CharField(max_length=30,default='Property')
     PropertySellorRent =models.CharField(max_length=30,default='Sell')
