@@ -48,7 +48,6 @@ def index(request,property_id):
         property=Property.objects.get(id = property_id)
         print(property)
         return render(request,'index.html',{'property':property})
-
 def propertyagent(request):
     # return HttpResponse('about')
     return render(request,template_name='propertyagent.html')
