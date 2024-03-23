@@ -4,7 +4,7 @@ from .models import Property
 from .models import Area
 from .models import Category
 # Create your views here.
-def proeprty(request):
+def property(request):
     displayresult = Property.objects.all()
     return render(request,'property.html',{'data':displayresult})
 def about(request):
