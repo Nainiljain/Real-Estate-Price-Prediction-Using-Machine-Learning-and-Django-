@@ -2,12 +2,12 @@
 
 {% block content %}
     <div class="row">
-        {% for property in Properties %}
+        {% for property in data %}
         <div class="col-sm-6">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{ property.PropertyName}}</h5>
-                    <p class="card-text">{{poperty.Property| trucatewords:20}}
+                    <p class="card-text">{{poperty.Property| truncatewords:20}}
                     </p>
                     <a href="{% url 'property_detail' %}" class="btn-btn-primary">Read More</a>
                 </div>

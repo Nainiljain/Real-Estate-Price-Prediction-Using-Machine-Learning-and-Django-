@@ -4,6 +4,9 @@ from .models import Property
 from .models import Area
 from .models import Category
 # Create your views here.
+def proeprty(request):
+    displayresult = Property.objects.all()
+    return render(request,'property.html',{'data':displayresult})
 def about(request):
     # return HttpResponse('about')
     return render(request,template_name='about.html')
@@ -45,9 +48,9 @@ def index(request,property_id):
             displayresult = Property.objects.filter(Area = a).values()
             return render(request,'index.html',{"data":displayresult})        
     else:
-        property=Property.objects.get(id = property_id)
+        property=Property.objects.all()
         print(property)
-        return render(request,'index.html',{'property':property})
+        return render(request,'index.html',{'data':property})
 def propertyagent(request):
     # return HttpResponse('about')
     return render(request,template_name='propertyagent.html')
