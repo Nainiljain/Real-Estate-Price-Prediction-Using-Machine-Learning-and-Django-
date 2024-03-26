@@ -11,9 +11,6 @@ def property(request):
         displayresult = Property.objects.filter(id=propertyId).values()
     print(displayresult)
     return render(request,'property.html',{'property':displayresult[1]})
-
-    displayresult = Property.objects.all()
-    return render(request,'property.html',{'data':displayresult})
 def about(request):
     # return HttpResponse('about')
     return render(request,template_name='about.html')
