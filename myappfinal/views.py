@@ -4,6 +4,14 @@ from .models import Property
 from .models import Area
 from .models import Category
 # Create your views here.
+def property(request):
+    propertyId = request.GET.get('property')
+    print("p",propertyId)
+    if propertyId:
+        displayresult = Property.objects.filter(id=propertyId).values()
+    print(displayresult)
+    return render(request,'property.html',{'property':displayresult[0]})
+    
 def about(request):
     # return HttpResponse('about')
     return render(request,template_name='about.html')
@@ -13,7 +21,7 @@ def contact(request):
 def error(request):
     # return HttpResponse('about')
     return render(request,template_name='error.html')
-def index(request,property_id):
+def index(request):
     # return HttpResponse('index')
     
     if request.method == "POST":
@@ -45,9 +53,9 @@ def index(request,property_id):
             displayresult = Property.objects.filter(Area = a).values()
             return render(request,'index.html',{"data":displayresult})        
     else:
-        property=Property.objects.get(id = property_id)
-        print(property)
-        return render(request,'index.html',{'property':property})
+        displayresult=Property.objects.all()
+        print(displayresult)
+        return render(request,'index.html',{'data':displayresult})
 def propertyagent(request):
     # return HttpResponse('about')
     return render(request,template_name='propertyagent.html')
