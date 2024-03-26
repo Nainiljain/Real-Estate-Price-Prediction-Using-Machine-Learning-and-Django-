@@ -1,18 +1,26 @@
-{% extends 'index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>property details</title>
+</head>
+<body>
+    {{ property }}
+    {{ property.PropertyName }}
+    {{ property.PropertySellorRent }} {{ property.Area.AreaName }} {{ property.Area.City.CityName }} {{property.Category.CategoryName}}
+    {{ property.Area.City.State.StateName}} {{ property.Subcategory.SubcategoryName}} {{ property.PropertyFromDate }} {{ property.PropertyToDate }} 
+    {{ property.PropertyStatus }}
+    <a href="#" class="unit-9">
+        <div class="image" style="background-image: url('{{ property.PropertyImage}}')"></div>
+            <div class="unit-9-content">
+                <h2>{{ property.PropertyName }}</h2>
+                <span>Rs. {{ property.PropertyAmount }}</span> 
+    <div>
+        {{ property.PropertySellorRent }} {{ property.Area.AreaName }} {{ property.Area.City.CityName }} {{property.Category.CategoryName}}
+        {{ property.Area.City.State.StateName}} {{ property.Subcategory.SubcategoryName}} {{ property.PropertyFromDate }} {{ property.PropertyToDate }} 
+        {{ property.PropertyStatus }}
+    </div> 
 
-{% block content %}
-    <div class="row">
-        {% for property in data %}
-        <div class="col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">{{ property.PropertyName}}</h5>
-                    <p class="card-text">{{poperty.Property| truncatewords:20}}
-                    </p>
-                    <a href="{% url 'property_detail' %}" class="btn-btn-primary">Read More</a>
-                </div>
-            </div>
-        </div>
-        {% end for %}
-    </div>
-{% endblock content %}    
+</body>
+</html>

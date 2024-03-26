@@ -33,4 +33,5 @@ urlpatterns = [
     path('propertylist.html',views.index, name="propertylist"),
     path('propertytype.html',views.index, name="propertytype"),
     path('testimonial.html',views.index, name="testimonial"),
+    path('property',views.property, name="property"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

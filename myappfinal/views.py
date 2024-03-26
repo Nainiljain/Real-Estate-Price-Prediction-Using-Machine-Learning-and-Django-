@@ -5,6 +5,13 @@ from .models import Area
 from .models import Category
 # Create your views here.
 def property(request):
+    propertyId = request.GET.get('property')
+    print("p",propertyId)
+    if propertyId:
+        displayresult = Property.objects.filter(id=propertyId).values()
+    print(displayresult)
+    return render(request,'property.html',{'property':displayresult[1]})
+
     displayresult = Property.objects.all()
     return render(request,'property.html',{'data':displayresult})
 def about(request):
@@ -16,7 +23,7 @@ def contact(request):
 def error(request):
     # return HttpResponse('about')
     return render(request,template_name='error.html')
-def index(request,property_id):
+def index(request):
     # return HttpResponse('index')
     
     if request.method == "POST":
@@ -48,6 +55,9 @@ def index(request,property_id):
             displayresult = Property.objects.filter(Area = a).values()
             return render(request,'index.html',{"data":displayresult})        
     else:
+        displayresult=Property.objects.all()
+        print(displayresult)
+        return render(request,'index.html',{'data':displayresult})
         property=Property.objects.all()
         print(property)
         return render(request,'index.html',{'data':property})
