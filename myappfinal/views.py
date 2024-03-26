@@ -12,6 +12,8 @@ def property(request):
     print(displayresult)
     return render(request,'property.html',{'property':displayresult[1]})
 
+    displayresult = Property.objects.all()
+    return render(request,'property.html',{'data':displayresult})
 def about(request):
     # return HttpResponse('about')
     return render(request,template_name='about.html')
@@ -56,6 +58,9 @@ def index(request):
         displayresult=Property.objects.all()
         print(displayresult)
         return render(request,'index.html',{'data':displayresult})
+        property=Property.objects.all()
+        print(property)
+        return render(request,'index.html',{'data':property})
 def propertyagent(request):
     # return HttpResponse('about')
     return render(request,template_name='propertyagent.html')
