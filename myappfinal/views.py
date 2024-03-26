@@ -10,8 +10,8 @@ def property(request):
     if propertyId:
         displayresult = Property.objects.filter(id=propertyId).values()
     print(displayresult)
-    return render(request,'property.html',{'property':displayresult[0]})
-      
+    return render(request,'property.html',{'property':displayresult[1]})
+
 def about(request):
     # return HttpResponse('about')
     return render(request,template_name='about.html')
