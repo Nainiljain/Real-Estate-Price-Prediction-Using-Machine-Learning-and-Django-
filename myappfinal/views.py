@@ -3,7 +3,6 @@ from django.shortcuts import render
 from .models import Property
 from .models import Area
 from .models import Category
-from django.shortcuts import get_list_or_404, get_object_or_404
 # Create your views here.
 def singleproperty(request):
     propertyId = request.GET.get('property')
@@ -55,6 +54,7 @@ def index(request):
         displayresult=Property.objects.all()
         print(displayresult)
         return render(request,'index.html',{'data':displayresult})
+
 
 def testimonial(request):
     # return HttpResponse('about')
