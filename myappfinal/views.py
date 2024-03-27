@@ -3,14 +3,19 @@ from django.shortcuts import render
 from .models import Property
 from .models import Area
 from .models import Category
+from django.shortcuts import get_list_or_404, get_object_or_404
 # Create your views here.
-def property(request):
+def singleproperty(request):
     propertyId = request.GET.get('property')
     print("p",propertyId)
     if propertyId:
-        displayresult = Property.objects.filter(id=propertyId).values()
+        displayresult = Property.objects.filter(id=propertyId).order_by('?')
+        
     print(displayresult)
+    return render(request,'property.html',{'property':displayresult[0]})
+
     return render(request,'property.html',{'property':displayresult[1]})
+
 def about(request):
     # return HttpResponse('about')
     return render(request,template_name='about.html')
