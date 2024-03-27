@@ -27,7 +27,6 @@ def index(request):
         displayproperty=Property.objects.all()
         print(displayproperty)
         return render(request,'index.html',{"data":displayproperty})
-
 def propertyagent(request):
     # return HttpResponse('about')
     return render(request,template_name='propertyagent.html')
