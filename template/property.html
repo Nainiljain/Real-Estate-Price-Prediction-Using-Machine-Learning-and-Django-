@@ -264,5 +264,22 @@
 <script src="/static/lib/owlcarousel/owl.carousel.min.js"></script>   <!-- Template Javascript -->
 <script src="/static/js/main.js"></script>
 
+    {{ property }}
+    {{ property.PropertyName }}
+    {{ property.PropertySellorRent }} {{ property.Area.AreaName }} {{ property.Area.City.CityName }} {{property.Category.CategoryName}}
+    {{ property.Area.City.State.StateName}} {{ property.Subcategory.SubcategoryName}} {{ property.PropertyFromDate }} {{ property.PropertyToDate }} 
+    {{ property.PropertyStatus }}
+    <a href="#" class="unit-9">
+            <div class="unit-9-content">
+                <img src="{{ property.PropertyImage.url }}" alt="{{ property.PropertyTitle }}">
+                <h2>{{ property.PropertyName }}</h2>
+                <span>Rs. {{ property.PropertyAmount }}</span> 
+    <div>
+        {{ property.PropertySellorRent }} {{ property.Area.AreaName }} {{ property.Area.City.CityName }} {{property.Category.CategoryName}}
+        {{ property.Area.City.State.StateName}} {{ property.Subcategory.SubcategoryName}} {{ property.PropertyFromDate }} {{ property.PropertyToDate }} 
+        {{ property.PropertyStatus }}
+    </div> 
+
+
 </body>
 </html>
