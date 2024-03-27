@@ -25,13 +25,10 @@ admin.site.index_title = "Nainil title"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index, name="index"),
-    path('about.html',views.index, name="about"),
-    path('contact.html',views.index, name="contact"),
-    path('error.html',views.index, name="error"),
-    path('propertyagent.html',views.index, name="propertyagent"),
-    path('propertylist.html',views.index, name="propertylist"),
-    path('propertytype.html',views.index, name="propertytype"),
-    path('testimonial.html',views.index, name="testimonial"),
-    path('property',views.property, name="property"),
+    path('index.html',views.index, name="index"),
+    path('about.html',views.about, name="about"),
+    path('contact.html',views.contact, name="contact"),
+    path('error.html',views.error, name="error"),
+    path('testimonial.html',views.testimonial, name="testimonial"),
+    path('property',views.singleproperty, name="property"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
