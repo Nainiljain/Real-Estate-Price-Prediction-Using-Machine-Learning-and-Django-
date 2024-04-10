@@ -1,9 +1,39 @@
+import os
+import pickle
+import numpy as np
 from django.http import HttpResponse
 from django.shortcuts import render 
 from .models import Property
 from .models import Area
 from .models import Category
+from .forms import PricePredictionForm
 # Create your views here.
+def predict_price(request):
+    if request.method == 'POST':
+        form = PricePredictionForm(request.POST)
+        if form.is_valid():
+            # Load the trained linear regression model
+            
+            with open('newclassifierforrent.pkl','rb') as file:
+                dict1 = pickle.load(file)   
+            
+            # Extract input data from the form
+            new_data = np.array(list(form.cleaned_data.values())).reshape(1, -1)
+
+            # Perform prediction
+            predicted_price = pickle.predict(new_data)[0]
+
+            # Prepare the response  
+            context = {
+                'form': form,
+                'predicted_price': round(predicted_price, 2),
+            }
+            return render(request, 'index.html', context)
+    else:
+        form = PricePredictionForm()
+
+    context = {'form': form}
+    return render(request, 'index.html', context)
 def singleproperty(request):
     propertyId = request.GET.get('property')
     print("p",propertyId)
