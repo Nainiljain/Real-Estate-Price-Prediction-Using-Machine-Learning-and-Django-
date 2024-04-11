@@ -46,12 +46,12 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Rate Change</button>
+        <button type="submit">Predict</button>
     </form>
 
-    {% if predicted_price %}
+    {% if rate_change %}
     <div>
-        <h2>Predicted Price: ${{ predicted_price }}</h2>
+        <h2>Rate Change: The Rate will {{ rate_change }}</h2>
     </div>
     {% endif %}
     <div class="container-xxl bg-white p-0">

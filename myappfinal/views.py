@@ -1,36 +1,37 @@
+from django.http import HttpResponse
 import os
 import pickle
 import numpy as np
-from django.http import HttpResponse
 from django.shortcuts import render 
 from .models import Property
 from .models import Area
 from .models import Category
-from .forms import PricePredictionForm
+from .forms import RatechangePredictionForm
 # Create your views here.
-def predict_price(request):
+def rate_change(request):
+    #return HttpResponse
     if request.method == 'POST':
-        form = PricePredictionForm(request.POST)
+        form = RatechangePredictionForm(request.POST)
         if form.is_valid():
             # Load the trained linear regression model
             
-            with open('newclassifierforrent.pkl','rb') as file:
-                dict1 = pickle.load(file)   
+            with open('classifierforrent.pkl','rb') as file:
+                clf = pickle.load(file)   
             
             # Extract input data from the form
             new_data = np.array(list(form.cleaned_data.values())).reshape(1, -1)
 
             # Perform prediction
-            predicted_price = pickle.predict(new_data)[0]
+            rate_change = clf.predict(new_data)[0]
 
             # Prepare the response  
             context = {
                 'form': form,
-                'predicted_price': round(predicted_price, 2),
+                'rate_change': round(rate_change, 2),
             }
             return render(request, 'index.html', context)
     else:
-        form = PricePredictionForm()
+        form = RatechangePredictionForm()
 
     context = {'form': form}
     return render(request, 'index.html', context)
