@@ -30,7 +30,7 @@ def rate_change(request):
                 'form': form,
                 'rate_change': round(rate_change, 2),
             }
-            return render(request, 'index.html', context)
+            return render(request, 'prediction.html', context)
     else:
         form = RatechangePredictionForm()
 
