@@ -7,6 +7,7 @@ from .models import Property
 from .models import Area
 from .models import Category
 from .forms import RatechangePredictionForm
+from .models import Contactform
 # Create your views here.
 def rate_change(request):
     #return HttpResponse
@@ -49,6 +50,7 @@ def about(request):
     return render(request,template_name='about.html')
 def contact(request):
     # return HttpResponse('about')
+
     return render(request,template_name='contact.html')
 def index(request):
     # return HttpResponse('index')

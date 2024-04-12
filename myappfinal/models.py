@@ -1,6 +1,7 @@
+import django
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import datetime
+from django.utils import timezone
 # Create your models here.
 
 class State(models.Model):
@@ -58,9 +59,9 @@ class Property(models.Model):
     PropertyTitle = models.CharField(max_length=30,default='Property')
     PropertySellorRent =models.CharField(max_length=30,default='Sell')
     PropertyAmount =models.DecimalField(max_digits=15,decimal_places=3,default=0.0)
-    PropertyFromDate =models.DateTimeField(default=datetime.now(), blank=True)
+    PropertyFromDate =models.DateTimeField(default=django.utils.timezone.now, blank=True)
     PropertyImage =models.ImageField(upload_to='images')
-    PropertyToDate =models.DateTimeField(default=datetime.now(), blank=True)
+    PropertyToDate =models.DateTimeField(default=django.utils.timezone.now, blank=True)
     PropertyStatus =models.CharField(max_length=20)
     def __str__(self) -> str:
         return self.PropertyName
@@ -92,3 +93,18 @@ class Requirements(models.Model):
         return self.RequirementsBuyorRent
     def __str__(self) -> str:
         return self.RequirementsRemarks
+
+class Contactform(models.Model):
+    name = models.CharField(max_length=200, null=False, blank=False)
+    email = models.EmailField(max_length=200, null=False, blank=False)
+    subject= models.CharField(max_length=200, null=False, blank=False)
+    message = models.CharField(max_length=200, null=False, blank=False)   
+
+    def __str__(self) -> str:
+        return self.name
+    def __str__(self) -> str:
+        return self.email
+    def __str__(self) -> str:
+        return self.subject
+    def __str__(self) -> str:
+        return self.message
