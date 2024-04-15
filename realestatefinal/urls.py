@@ -25,10 +25,10 @@ admin.site.index_title = "Nainil title"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('myappfinal.urls')),
-    path('index.html',views.index, name="index"),
+    path('',views.index, name="index"),
     path('about.html',views.about, name="about"),
     path('contact.html',views.contact, name="contact"),
     path('testimonial.html',views.testimonial, name="testimonial"),
     path('property',views.singleproperty, name="property"),
+    path('prediction.html',views.rate_change,name="prediction")    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

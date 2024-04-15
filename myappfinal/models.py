@@ -98,13 +98,9 @@ class Contactform(models.Model):
     name = models.CharField(max_length=200, null=False, blank=False)
     email = models.EmailField(max_length=200, null=False, blank=False)
     subject= models.CharField(max_length=200, null=False, blank=False)
-    message = models.CharField(max_length=200, null=False, blank=False)   
+    message = models.CharField(max_length=200, null=False, blank=False) 
+    
 
     def __str__(self) -> str:
-        return self.name
-    def __str__(self) -> str:
-        return self.email
-    def __str__(self) -> str:
-        return self.subject
-    def __str__(self) -> str:
-        return self.message
+        return self.name + ' ' +self.email +" " + self.subject +" "+ self.message
+    

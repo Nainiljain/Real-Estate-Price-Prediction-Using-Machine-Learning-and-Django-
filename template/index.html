@@ -161,17 +161,9 @@
                     <div class="col-12 text-center">
                         <a class="btn btn-primary py-3 px-5" href="">Browse More Property</a>
                     </div>
-                    <form method="post">
-                        {% csrf_token %}
-                        {{ form.as_p }}
-                        <button type="submit">Predict</button>
-                    </form>
-                
-                    {% if rate_change %}
-                    <div>
-                        <h2>Rate Change: The Rate will {{ rate_change }}</h2>
-                    </div>
-                    {% endif %}        
+                    <button type="button">
+                        <a href="prediction.html">Prediction</a>
+                    </button>
         </div>            
         <!-- Testimonial Start -->
         <div class="container-xxl py-5">
