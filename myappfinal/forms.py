@@ -21,3 +21,4 @@ class RatechangePredictionForm(forms.Form):
     PriceFtRange = forms.IntegerField(label='PriceFtRange', min_value=0)
     RentUnrent = forms.ChoiceField(widget = forms.Select(), 
     choices = ([('0','Rent'), ('1','Purchase')]), initial='3', required = True,)
+

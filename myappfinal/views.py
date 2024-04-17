@@ -68,7 +68,6 @@ def contact(request):
     return render(request,template_name='contact.html')
 def index(request):
     # return HttpResponse('index')
-    
     if request.method == "POST":
         c =request.POST.get('category')
         a=request.POST.get('area')
