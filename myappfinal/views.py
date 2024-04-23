@@ -105,3 +105,7 @@ def index(request):
 def testimonial(request):
     # return HttpResponse('about')
     return render(request,template_name='testimonial.html')
+
+def jquery(request):
+    #return HttpResponse('jquery')
+    return render(request,template_name='jquery.html')

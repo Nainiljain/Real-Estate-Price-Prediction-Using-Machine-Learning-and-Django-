@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> 
+        jq 1
+    </title>
+</head>
+<body>
+    <form>
+        Enter number 1
+        <input type="text" name="number1" id="number1"/>
+        <br/>
+        Enter number 2
+        <input type="text" name="number2" id="number2"/>
+        <br/>
+        Answer
+        <input readonly type="text" name="answer" id="answer"/>
+        <br/>
+        <select id="opr" name="opr">
+            <option value="">Select Operation</option>
+            <option value="1">Add</option>
+            <option value="2">Subtract</option>
+            <option value="3">Multiply</option>
+            <option value="4">Divide</option>
+        </select>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $("#opr").on('change',function(e){
+                let no1 = $("#number1").val();
+                let no2 = $("#number2").val();
+                let op = $("#opr").val();
+                let ans = "";
+
+                if(op == "1"){
+                    ans=parseInt(no1)+ parseInt(no2);
+                }
+                else if(op == "2"){
+                    ans=parseInt(no1)- parseInt(no2);
+                }
+                else if(op == "3"){
+                    ans=parseInt(no1)* parseInt(no2);
+                }
+                else if(op == "4"){
+                    ans=parseInt(no1)/ parseInt(no2);
+                }
+                $("#answer").val(ans);
+            });
+        });
+    </script>
+</body>
+</html>
