@@ -16,7 +16,7 @@ def rate_change(request):
         srno = float(request.POST.get("number"))
         category = float(request.POST.get("opr"))
         residentialtype = float(request.POST.get("residential")) 
-        commercialtype = float(request.POST.get("commercial"))
+        commercialtype = request.POST.get("commercial")
         size = float(request.POST.get("size"))
         Luxury = float(request.POST.get("luxury"))
         location = float(request.POST.get("location"))
