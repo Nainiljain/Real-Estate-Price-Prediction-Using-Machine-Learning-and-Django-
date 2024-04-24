@@ -31,5 +31,5 @@ urlpatterns = [
     path('testimonial.html',views.testimonial, name="testimonial"),
     path('property',views.singleproperty, name="property"),
     path('prediction.html',views.rate_change, name="prediction"),
-    path('jquery.html',views.jquery, name="jquery"),   
+    path('AddProperty.html',views.AddProperty, name="AddProperty"),   
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

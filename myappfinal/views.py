@@ -8,20 +8,43 @@ from .models import Area
 from .models import Category
 from .forms import RatechangePredictionForm
 from .models import Contactform
-#from .models import Contactform
 # Create your views here.
 def rate_change(request):
     #return HttpResponse
+    print(request)
     if request.method == 'POST':
+        srno = float(request.POST.get("number"))
+        category = float(request.POST.get("opr"))
+        residentialtype = float(request.POST.get("residential")) 
+        commercialtype = float(request.POST.get("commercial"))
+        size = float(request.POST.get("size"))
+        Luxury = float(request.POST.get("luxury"))
+        location = float(request.POST.get("location"))
+        subcategory = float(request.POST.get("category"))
+        Age = float(request.POST.get("Age"))
+        Ameneties = float(request.POST.get("Ameneties"))
+        pice = float(request.POST.get("price"))
+        choice = float(request.POST.get("choice"))
+        print(srno)
+        print(category)
+        print(residentialtype)
+        print(commercialtype)
+        print(size)
+        print(Luxury)
+        print(location)
+        print(subcategory)
+        print(Age)
+        print(Ameneties)
+        print(pice)
+        print(choice)
         form = RatechangePredictionForm(request.POST)
-        if form.is_valid():
-            # Load the trained linear regression model
-            
-            with open('classifierforrent.pkl','rb') as file:
-                clf = pickle.load(file)   
+      
+        list=[srno,category,residentialtype,commercialtype,size,Luxury,location,subcategory,Age,Ameneties,pice,choice]
+        with open('classifierforrent.pkl','rb') as file:
+            clf = pickle.load(file)   
             
             # Extract input data from the form
-            new_data = np.array(list(form.cleaned_data.values())).reshape(1, -1)
+            new_data = np.array(list).reshape(1, -1)
 
             # Perform prediction
             rate_change = clf.predict(new_data)[0]
@@ -31,6 +54,7 @@ def rate_change(request):
                 'form': form,
                 'rate_change': round(rate_change, 2),
             }
+            print('p')
             return render(request, 'prediction.html', context)
     else:
         form = RatechangePredictionForm()
@@ -106,6 +130,6 @@ def testimonial(request):
     # return HttpResponse('about')
     return render(request,template_name='testimonial.html')
 
-def jquery(request):
+def AddProperty(request):
     #return HttpResponse('jquery')
-    return render(request,template_name='jquery.html')
+    return render(request,template_name='AddProperty.html')

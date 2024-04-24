@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -76,7 +77,7 @@
                         </div>
                         <a href="contact.html" class="nav-item nav-link">Contact</a>
                     </div>
-                    <a href="AddProperty.html" class="btn btn-primary px-3 d-none d-lg-flex">Add Property</a>
+                    <a href="" class="btn btn-primary px-3 d-none d-lg-flex">Add Property</a>
                 </div>
             </nav>
         </div>
@@ -132,108 +133,107 @@
         </form>
         <!-- Search End -->
 
-        <form method="post">
-            {% csrf_token %}
-            <p>Sr N.o.
-                <input type="number" name="number" id="number"/>
-                <br></p>
-                <p>Property Category
-                <select id="opr" name="opr">
-                    <option value="">Select Property Category</option>
-                    <option value="1">Residential</option>
-                    <option value="2">Commercial</option>
-                </select>
-                <br></p>
-                <div id="divres1">
-                <p>    
-                Residential Type
-                <select id="residential" name="residential">
-                    <option value="">Select Residential Type</option>
-                    <option value="1">Flate</option>
-                    <option value="2">House</option>
-                </select>
-                <br></p>
-                <p>
-                Sub Category
-                <select id="category" name="category">
-                    <option value="">Select Sub Category</option>
-                    <option value="1">1bhk</option>
-                    <option value="2">2bhk</option>
-                    <option value="3">3bhk</option>
-                    <option value="4">4bhk</option>
-                    <option value="5">5bhk</option>
-                </select>
-                <br></p>
-            </div>
-                <br>
-                <div id="divcom1">
-                <p>    
-                Commercial Type
-                <select id="commercial" name="commercial">
-                    <option value="">Select Commercial Type</option>
-                    <option value="1">Office</option>
-                    <option value="2">Shop/Showroom</option>
-                    <option value="3">Plot</option>
-                </select>
-            </p>
-            </div>
-                <br>
-                <p>Area Size
-                <input type="text" name="size" id="size">
-                <label for="Unit"></label>
-                <select id="size1" name="size1">
-                    <option value="">Select Area Size Unit</option>
-                    <option value="1">sqft</option>
-                    <option value="2">Bigha</option>
-                    <option value="3">Hectare</option>
-                    <option value="4">Acre</option>
-                </select>
-                <br></p>
-                <p> Luxury
-                <select id="luxury" name="luxury">
-                    <option value="">Select Luxury</option>
-                    <option value="1">Yes</option>
-                    <option value="2">No</option>
-                </select>
-                <br></p>
-                <p>Property Location
-                <select id="location" name="location">
-                    <option value="">Select Location</option>
-                    <option value="1">Incity</option>
-                    <option value="2">Suburb</option>
-                </select>
-                <br></p>
-                <p>Property Age
-                <select id="Age" name="Age">
-                    <option value="">Select Age</option>
-                    <option value="1">Old</option>
-                    <option value="2">New</option>
-                </select>
-                <br></p>
-                <p>Numeber of Ameneties
-                <input type="number" name="Ameneties" id="Ameneties">
-                <br></p>
-                <p>PriceFt.Range
-                <input type="number" name="price" id="price">
-                <br></p>
-                <p>Choice
-                <select id="choice" name="choice">
-                    <option value="">Select Choice</option>
-                    <option value="1">Purchase</option>
-                    <option value="2">Rent</option>
-                </select>
-                <br></p>
-            <button type="submit">Predict</button>
-        </form>
-    
-        {% if rate_change %}
-        <div>
-            <h2>Rate Change: The Rate will {{ rate_change }} Increase</h2>
-            <h1>Note:</h1> <h3>1 - Rate will Increase <br> - Rate Will Decrease</h3> 
-        </div>
-        {% endif %}    
-                
+    <form align="center" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>Sr N.o.
+        <input type="number" name="number" id="number"/>
+        <br></p>
+        <p>Property Category
+        <select id="opr" name="opr">
+            <option value="">Select Property Category</option>
+            <option value="1">Residential</option>
+            <option value="2">Commercial</option>
+        </select>
+        <br></p>
+        <div id="divres1">
+        <p>    
+        Residential Type
+        <select id="residential" name="residential">
+            <option value="">Select Residential Type</option>
+            <option value="1">Flate</option>
+            <option value="2">House</option>
+        </select>
+        <br></p>
+        <p>
+        Sub Category
+        <select id="category" name="category">
+            <option value="">Select Sub Category</option>
+            <option value="1">1bhk</option>
+            <option value="2">2bhk</option>
+            <option value="3">3bhk</option>
+            <option value="4">4bhk</option>
+            <option value="5">5bhk</option>
+        </select>
+        <br></p>
+    </div>
+        <br>
+        <div id="divcom1">
+        <p>    
+        Commercial Type
+        <select id="com" name="com">
+            <option value="">Select Commercial Type</option>
+            <option value="1">Office</option>
+            <option value="2">Shop/Showroom</option>
+            <option value="3">Plot</option>
+        </select>
+    </p>
+    </div>
+        <br>
+        <p>Area Size
+        <input type="text" name="size" id="size">
+        <label for="Unit"></label>
+        <select id="size1" name="size1">
+            <option value="">Select Area Size Unit</option>
+            <option value="1">sqft</option>
+            <option value="2">Bigha</option>
+            <option value="3">Hectare</option>
+            <option value="4">Acre</option>
+        </select>
+        <br></p>
+        <p>Luxury
+        <select id="luxury" name="luxury">
+            <option value="">Select Luxury</option>
+            <option value="1">Yes</option>
+            <option value="2">No</option>
+        </select>
+        <br></p>
+        <p>Property Location
+        <select id="location" name="location">
+            <option value="">Select Location</option>
+            <option value="1">Incity</option>
+            <option value="2">Suburb</option>
+        </select>
+        <br></p>
+        <p>Property Age
+        <select id="Age" name="Age">
+            <option value="">Select Age</option>
+            <option value="1">Old</option>
+            <option value="2">New</option>
+        </select>
+        <br></p>
+        <p>Numeber of Ameneties
+        <input type="number" name="Ameneties" id="Ameneties">
+        <br></p>
+        <p>PriceFt.Range
+        <input type="number" name="price" id="price">
+        <br></p>
+        <p>Choice
+        <select id="choice" name="choice">
+            <option value="">Select Choice</option>
+            <option value="1">Purchase</option>
+            <option value="2">Rent</option>
+        </select>
+        <br></p>
+        <input type="submit" value="Predict">
+    </form>
 
+    {% if rate_change %}
+    <div>
+        <h2>Rate Change: The Rate will {{ rate_change }} Increase</h2>
+    </div>
+    {% endif %}    
+            
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
             <div class="container py-5">
