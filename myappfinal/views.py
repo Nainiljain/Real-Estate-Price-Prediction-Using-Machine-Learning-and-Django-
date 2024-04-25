@@ -3,7 +3,7 @@ import os
 import pickle
 import numpy as np
 from django.shortcuts import render 
-from .models import Property
+from .models import Property, Subcategory
 from .models import Area
 from .models import Category
 from .forms import RatechangePredictionForm
@@ -17,6 +17,10 @@ def rate_change(request):
         category = float(request.POST.get("opr"))
         residentialtype = float(request.POST.get("residential")) 
         commercialtype = request.POST.get("commercial")
+        if category == '1':
+            category = residentialtype.value()
+        else : 
+            category = commercialtype.value()    
         size = float(request.POST.get("size"))
         Luxury = float(request.POST.get("luxury"))
         location = float(request.POST.get("location"))
@@ -86,7 +90,6 @@ def contact(request):
         contactobj.email = email
         contactobj.subject = subject
         contactobj.message= message
-        print(contactobj)
         contactobj.save()
 
     return render(request,template_name='contact.html')
@@ -132,4 +135,46 @@ def testimonial(request):
 
 def AddProperty(request):
     #return HttpResponse('jquery')
+
+    if request.POST !=None:
+        PropertyName=request.POST.get("Property Name")
+        Areaid=request.POST.get("Area Name")
+        Categoryid = request.POST.get("category")
+        Subcategoryid = request.POST.get("subcategory")
+        PropertyTitle = request.POST.get("Property title")
+        PropertySellorRent = request.POST.get("propertyType")
+        PropertyAmount = request.POST.get("price")
+        PropertyFromDate = request.POST.get("availabilityStart")
+        PropertyImage = request.POST.get("file")
+        PropertyToDate = request.POST.get("availabilityEnd")
+        PropertyStatus = request.POST.get("Property status")
+        print(PropertyName)
+        print(Areaid)
+        print(Categoryid)
+        print(Subcategoryid)
+        print(PropertyTitle)
+        print(PropertySellorRent)
+        print(PropertyAmount)
+        print(PropertyFromDate)
+        print(PropertyImage)
+        print(PropertyToDate)
+        print(PropertyStatus)
+        area_object = Area.objects.get(pk=Areaid)
+        category_object = Category.objects.get(pk=Categoryid)
+        Subcategory_object = Subcategory.objects.get(pk=Subcategoryid)    
+        propertyobj = Property()
+        propertyobj.PropertyName = PropertyName
+        propertyobj.Area = area_object
+        propertyobj.Category = category_object
+        propertyobj.Subcategory = Subcategory_object
+        propertyobj.PropertyTitle = PropertyTitle
+        propertyobj.PropertySellorRent = PropertySellorRent
+        propertyobj.PropertyAmount = PropertyAmount
+        propertyobj.PropertyFromDate = PropertyFromDate
+        propertyobj.PropertyImage = PropertyImage
+        propertyobj.PropertyToDate = PropertyToDate
+        propertyobj.PropertyStatus= PropertyStatus
+        propertyobj.save()
+        
+
     return render(request,template_name='AddProperty.html')

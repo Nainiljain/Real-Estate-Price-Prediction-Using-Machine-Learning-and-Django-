@@ -102,5 +102,10 @@ class Contactform(models.Model):
     
 
     def __str__(self) -> str:
-        return self.name + ' ' +self.email + " " +self.subject + " " +self.message
-        
+        return self.name 
+    def __str__(self) -> str:
+        return self.email
+    def __str__(self) -> str:
+        return self.subject
+    def __str__(self) -> str:
+        return self.message
