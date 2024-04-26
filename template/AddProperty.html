@@ -175,7 +175,7 @@
                 </ul>
             
                 <h2>Start posting your property, it's free</h2>
-                <form action="#" method="POST">
+                <form action="#" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                         <fieldset>
                             <legend>Add Basic Details</legend>
@@ -226,7 +226,7 @@
                             <fieldset>
                                 <legend>Property Details</legend>
                                 <label for="price">Price:</label>
-                                <input type="number" id="price" name="price" min="0" step="1000" required>
+                                <input type="number" id="price" name="price" min="0" required>
                         
                                 <label for="availability">Availability:</label>
                                 <input type="date" id="availabilityStart" name="availabilityStart" required>
@@ -306,9 +306,9 @@
                             &copy; <a class="border-bottom" href="#">Real estate Price Prediction using machine Learning and Django</a>, All Right Reserved. 
 							
 							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-							Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+							Designed By Nainil Jain
                         </div>
-                        <div class="col-md-6 text-center text-md-end">
+                        <div class="col-md-6 text-center text-md-end">  
                             <div class="footer-menu">
                                 <a href="">Home</a>
                                 <a href="">Cookies</a>

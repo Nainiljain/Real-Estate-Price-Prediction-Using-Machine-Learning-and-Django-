@@ -13,14 +13,19 @@ def rate_change(request):
     #return HttpResponse
     print(request)
     if request.method == 'POST':
-        srno = float(request.POST.get("number"))
         category = float(request.POST.get("opr"))
-        residentialtype = float(request.POST.get("residential")) 
-        commercialtype = request.POST.get("commercial")
-        if category == '1':
-            category = residentialtype.value()
-        else : 
-            category = commercialtype.value()    
+
+        residentialtype = request.POST.get("residential")
+        if residentialtype == None or residentialtype =='':
+            residentialtype=0
+        else:
+            residentialtype = float(residentialtype)
+         
+        commercialtype = (request.POST.get("commercial")) 
+        if commercialtype == None or commercialtype =='':
+            commercialtype=0
+        else:
+            commercialtype = float(commercialtype)    
         size = float(request.POST.get("size"))
         Luxury = float(request.POST.get("luxury"))
         location = float(request.POST.get("location"))
@@ -29,22 +34,21 @@ def rate_change(request):
         Ameneties = float(request.POST.get("Ameneties"))
         pice = float(request.POST.get("price"))
         choice = float(request.POST.get("choice"))
-        print(srno)
-        print(category)
-        print(residentialtype)
-        print(commercialtype)
-        print(size)
-        print(Luxury)
-        print(location)
-        print(subcategory)
-        print(Age)
-        print(Ameneties)
-        print(pice)
-        print(choice)
+        print('catory',category)
+        print('residential',residentialtype)
+        print('commercial',commercialtype)
+        print('size',size)
+        print('luxury',Luxury)
+        print('location',location)
+        print('subcategory',subcategory)
+        print('age',Age)
+        print('ameneties',Ameneties)
+        print('pice',pice)
+        print('choice',choice)
         form = RatechangePredictionForm(request.POST)
       
-        list=[srno,category,residentialtype,commercialtype,size,Luxury,location,subcategory,Age,Ameneties,pice,choice]
-        with open('classifierforrent.pkl','rb') as file:
+        list=[category,residentialtype,commercialtype,size,Luxury,location,subcategory,Age,Ameneties,pice,choice]
+        with open('classifierforsell.pkl','rb') as file:
             clf = pickle.load(file)   
             
             # Extract input data from the form
@@ -80,11 +84,17 @@ def about(request):
     return render(request,template_name='about.html')
 def contact(request):
     # return HttpResponse('about')
+    if request.method == 'GET':
+        return render(request,template_name='contact.html')    
     if request.POST !=None:
         name=request.POST.get("Name")
         email = request.POST.get("Email")
         subject = request.POST.get("Subject")
         message = request.POST.get("Message")
+        print(name)
+        print(email)
+        print(subject)
+        print(message)
         contactobj = Contactform()
         contactobj.name = name
         contactobj.email = email
@@ -136,6 +146,8 @@ def testimonial(request):
 def AddProperty(request):
     #return HttpResponse('jquery')
 
+    if request.method == 'GET':
+        return render(request,template_name='AddProperty.html')  
     if request.POST !=None:
         PropertyName=request.POST.get("Property Name")
         Areaid=request.POST.get("Area Name")
@@ -145,7 +157,7 @@ def AddProperty(request):
         PropertySellorRent = request.POST.get("propertyType")
         PropertyAmount = request.POST.get("price")
         PropertyFromDate = request.POST.get("availabilityStart")
-        PropertyImage = request.POST.get("file")
+        PropertyImage = request.FILES["file"]
         PropertyToDate = request.POST.get("availabilityEnd")
         PropertyStatus = request.POST.get("Property status")
         print(PropertyName)
@@ -177,4 +189,4 @@ def AddProperty(request):
         propertyobj.save()
         
 
-    return render(request,template_name='AddProperty.html')
+        return render(request,template_name='AddProperty.html')  
